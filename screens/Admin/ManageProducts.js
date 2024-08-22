@@ -1,5 +1,10 @@
 // screens/Admin/ManageProducts.js
 
+/**
+ * Add, update, and delete products.
+ * Bulk upload and future integrations.
+*/
+
 import React, { useState, useEffect } from 'react';
 import { View, FlatList, StyleSheet, Alert, Image } from 'react-native';
 import { getProducts, addProduct, deleteProduct } from '../../data/product'; // Adjust the path as needed
