@@ -1,4 +1,6 @@
 /**navigation/AdminNavigator.js
+ * Manages the navigation within the admin section.
+ * Includes stack navigation for admin-specific screens such as ManageProducts, AdminProfile, and other admin functionalities.
  * Stack navigation for Admin functionalities, including product management and warehouse maps.
 */
 

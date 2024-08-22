@@ -1,4 +1,6 @@
 // screens/Admin/AdminScreen.js
+/**Represents the main dashboard or landing page for the admin section.
+Can include an overview, recent activities, quick access to key admin functions. */
 
 import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
