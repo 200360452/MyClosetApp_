@@ -1,7 +1,7 @@
 // screens/Admin/ManageProducts.js
 
 /**
- * Add, update, and delete products.
+ * Management functions (Add, update, and delete products.
  * Bulk upload and future integrations.
 */
 

@@ -1,5 +1,5 @@
 // screens/Admin/OrdersScreen.js
 
-/**Manage and view inventory.
+/**Overview, search, filter, and sort inventory.
  * Refresh inventory button.
  * Analytics and sales reports /accountability (print).*/
