@@ -1,0 +1,16 @@
+Processus de Développement
+Pour construire MyClosetApp, nous avons suivi ces étapes :
+
+Planification : Définition des besoins de Chiic Happens et des objectifs du projet.
+
+Conception de Base : Création de la structure de base, incluant les tables pour les utilisateurs et les produits.
+
+Développement Initial : Mise en place des fonctionnalités essentielles : connexion des utilisateurs, affichage des produits, et gestion du panier.
+
+Fonctionnalités Avancées : Intégration du système QR codes pour la gestion des stocks et ajout des options de localisation des entrepôts.
+
+Tests : Vérification de la fonctionnalité de l'application pour assurer sa fiabilité et sa facilité d'utilisation.
+
+Déploiement : Lancement de l'application pour Chiic Happens avec formation pour les utilisateurs.
+
+Maintenance : Support continu et améliorations basées sur les retours des utilisateurs.
