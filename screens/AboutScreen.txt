@@ -1,0 +1,76 @@
+About
+Welcome to MyClosetApp!
+
+Developed as part of the CLG Dev. App Multiplatform/Mobile program, 
+this app is tailored for Chiic Happens, an online thrift store specializing in women’s fashion on platforms like Poshmark. 
+Our goal is to modernize and streamline inventory and sales management through a custom digital solution.
+
+Features and Objectives
+Efficient Inventory Management
+
+Objective: Simplify item listing and tracking.
+Feature: Integrated QR code system for inventory management.
+Frameworks:
+Expo-React Native for mobile app development.
+Expo-SQLite for local database management.
+QR Code Libraries to scan and manage inventory items.
+Optimized Operations
+
+Objective: Reduce repetitive tasks and manage your virtual "closet" directly.
+Feature: Bulk addition of products and streamlined crossposting process.
+Frameworks:
+React Navigation for seamless navigation between screens.
+Expo-ImagePicker for adding images from the camera or gallery.
+FlatList and Pressable components for displaying and interacting with product lists.
+Enhanced Sales Management
+
+Objective: Improve the customer experience with easy product addition and management.
+Feature: User-friendly interface for viewing product details, adding items to the cart, and completing purchases.
+Frameworks:
+React Native Components for building interactive UI elements.
+Expo-SQLite for managing and storing user and product data.
+Custom Modals for checkout and transaction management.
+For any questions or support, please contact:
+Valérie Dupuy
+Email: 200360452@edu.clg.qc.ca
+
+Thank you for using MyClosetApp!
+
+
+// 
+
+À Propos
+Bienvenue dans MyClosetApp !
+
+Développée dans le cadre du programme Dev. App Multiplatform/Mobile du CLG, cette application est conçue sur mesure pour Chiic Happens, une friperie en ligne spécialisée dans la mode féminine sur des plateformes telles que Poshmark. Notre objectif est de moderniser et d'optimiser la gestion des inventaires et des ventes à travers une solution numérique personnalisée.
+
+Fonctionnalités et Objectifs
+Gestion Efficace des Inventaires
+
+Objectif : Simplifier la mise en ligne et le suivi des articles.
+Fonctionnalité : Système intégré de QR codes pour la gestion des stocks.
+Frameworks :
+Expo-React Native pour le développement de l'application mobile.
+Expo-SQLite pour la gestion de la base de données locale.
+Bibliothèques QR Code pour scanner et gérer les articles d'inventaire.
+Optimisation des Opérations
+
+Objectif : Réduire les tâches répétitives et gérer directement le « placard » virtuel.
+Fonctionnalité : Ajout en masse de produits et processus simplifié de crossposting.
+Frameworks :
+React Navigation pour une navigation fluide entre les écrans.
+Expo-ImagePicker pour ajouter des images depuis la caméra ou la galerie.
+FlatList et Pressable pour afficher et interagir avec les listes de produits.
+Gestion Améliorée des Ventes
+
+Objectif : Améliorer l'expérience client avec une gestion facile des produits et des achats.
+Fonctionnalité : Interface conviviale pour visualiser les détails des produits, ajouter des articles au panier et finaliser les achats.
+Frameworks :
+Composants React Native pour créer des éléments d'interface interactifs.
+Expo-SQLite pour gérer et stocker les données des utilisateurs et des produits.
+Modals Personnalisés pour la gestion des paiements et des transactions.
+Pour toute question ou support, veuillez contacter :
+Valérie Dupuy
+Email : 200360452@edu.clg.qc.ca
+
+Merci d'utiliser MyClosetApp !
