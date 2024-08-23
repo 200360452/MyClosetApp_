@@ -19,5 +19,5 @@ dependencies
 ├── package-lock.json       # Project metadata and
 ├── package.json       # Project metadata and dependencies
 
-└── AppStructure.md    # Project strcuture
+└── AppStructure.txt    # Project strcuture
 └── README.md          # Project documentation
