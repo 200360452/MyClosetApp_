@@ -1,0 +1,21 @@
+{
+    "about_title": "About MyClosetApp",
+    "introduction": "Welcome to MyClosetApp! Developed as part of the Dev. App Multiplatform/Mobile program at CLG, this app is custom-designed for Chiic Happens, an online thrift shop specializing in women's fashion on platforms like Poshmark. Our goal is to modernize and streamline inventory and sales management through a tailored digital solution.",
+    "features": "Features and Objectives",
+    "efficient_inventory_management": "1. Efficient Inventory Management",
+    "objective_efficient_inventory_management": "Objective: Simplify item listing and tracking.",
+    "feature_efficient_inventory_management": "Feature: Integrated QR code system for stock management.",
+    "framework_efficient_inventory_management": "Frameworks: Expo-React Native, Expo-SQLite, QR Code libraries.",
+    "optimized_operations": "2. Optimized Operations",
+    "objective_optimized_operations": "Objective: Reduce repetitive tasks and manage the virtual closet directly.",
+    "feature_optimized_operations": "Feature: Bulk product addition and simplified crossposting process.",
+    "framework_optimized_operations": "Frameworks: React Navigation, Expo-ImagePicker, FlatList, Pressable.",
+    "improved_sales_management": "3. Improved Sales Management",
+    "objective_improved_sales_management": "Objective: Enhance the customer experience with easy product management and checkout.",
+    "feature_improved_sales_management": "Feature: User-friendly interface for viewing product details, adding items to cart, and completing purchases.",
+    "framework_improved_sales_management": "Frameworks: React Native components, Expo-SQLite, Custom Modals.",
+    "contact": "Contact",
+    "contact_name": "Valérie Dupuy",
+    "contact_email": "Email: 200360452@edu.clg.qc.ca"
+  }
+  
