@@ -1,23 +1,28 @@
 /**navigation/AdminNavigator.js
  * Stack navigation for Client functionalities, including produStack navigation for Client functionalities, including viewing products, managing the cart, shipping/curbside pickup (warehouses/locations/maps) and checking out.  
+ * 
+ * 
 */
-
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import ProductList from '../screens/Client/ProductList';
-import ProductDetail from '../screens/Client/ProductDetail';
-import Cart from '../screens/Client/Cart';
-import Checkout from '../screens/Client/Checkout'; // Assuming you have a Checkout screen
+import ClientDash from '../Client/ClientDash';
+import ShopScreen from '../Client/ShopScreen';
+import CartScreen from '../Client/CartScreen';
+import CheckoutScreen from '../Client/CheckoutScreen';
+import ThankYouScreen from '../Client/ThankYouScreen';
 
-const ClientStack = createStackNavigator();
+const Stack = createStackNavigator();
 
-const ClientNavigator = () => (
-  <ClientStack.Navigator>
-    <ClientStack.Screen name="ProductList" component={ProductList} />
-    <ClientStack.Screen name="ProductDetail" component={ProductDetail} />
-    <ClientStack.Screen name="Cart" component={Cart} />
-    <ClientStack.Screen name="Checkout" component={Checkout} />
-  </ClientStack.Navigator>
-);
+const ClientStackNavigator = () => {
+  return (
+    <Stack.Navigator initialRouteName="ClientDash">
+      <Stack.Screen name="ClientDash" component={ClientDash} />
+      <Stack.Screen name="ShopScreen" component={ShopScreen} />
+      <Stack.Screen name="CartScreen" component={CartScreen} />
+      <Stack.Screen name="CheckoutScreen" component={CheckoutScreen} />
+      <Stack.Screen name="ThankYouScreen" component={ThankYouScreen} />
+    </Stack.Navigator>
+  );
+};
 
-export default ClientNavigator;
+export default ClientStackNavigator;
