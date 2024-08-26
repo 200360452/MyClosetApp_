@@ -1,18 +1,19 @@
-// styles/global.js
+// src/styles/globalStyles.js
+
 // src/styles/globalStyles.js
 
 import { StyleSheet } from 'react-native';
-import { Ionicons, MaterialIcons } from '@expo/vector-icons'; // Import the icons you'll use
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
 // Define light and dark themes
 export const lightTheme = {
-  backgroundColor: '#ffffff',
-  color: '#000000',
+  backgroundColor: '#f0f0f0', // Changed to eggshell for a minimalist look
+  color: '#333333', // Dark charcoal for text
 };
 
 export const darkTheme = {
-  backgroundColor: '#000000',
-  color: '#ffffff',
+  backgroundColor: '#333333', // Dark charcoal for background
+  color: '#f0f0f0', // Eggshell for text
 };
 
 // Export icon components for use in your app
@@ -28,11 +29,29 @@ const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    backgroundColor: 'transparent', // Background color to be handled by theme
   },
   // General text styling
   text: {
     fontSize: 16,
     fontFamily: 'OpenSans-Regular', // Ensure custom font is properly linked
+  },
+  // Title text styling
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  // Button styles
+  button: {
+    backgroundColor: '#007bff', // Blue button background
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  buttonText: {
+    color: '#fff', // White text on buttons
+    fontSize: 16,
   },
   // Background styles for light and dark themes
   lightBackground: {
@@ -59,6 +78,11 @@ const globalStyles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 10,
     padding: 20,
+  },
+  // Link styles
+  link: {
+    color: '#007bff', // Blue color for links
+    textDecorationLine: 'underline',
   },
 });
 

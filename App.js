@@ -1,55 +1,50 @@
 // App.js
+// App.js
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { getAllProducts } from './src/services/data/product';
-import { getAllUsers } from './src/services/data/user';
+import { StyleSheet, View, ActivityIndicator } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import OpeningScreen from './src/screens/OpeningScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import { lightTheme, darkTheme } from './src/styles/globalStyles'; // Import themes if needed
+
+const Stack = createStackNavigator();
 
 export default function App() {
-  // Sample state variables to hold data
-  const [products, setProducts] = React.useState([]);
-  const [users, setUsers] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(true);
 
-  // Fetch products and users when the component mounts
   React.useEffect(() => {
-    // Fetch products
-    getAllProducts((error, data) => {
-      if (error) {
-        console.error('Error fetching products:', error);
-      } else {
-        setProducts(data);
-      }
-    });
-
-    // Fetch users
-    getAllUsers((error, data) => {
-      if (error) {
-        console.error('Error fetching users:', error);
-      } else {
-        setUsers(data);
-      }
-    });
+    // Simulate a loading delay
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // Adjust as needed
   }, []);
 
+  if (isLoading) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" color={lightTheme.color} />
+        <StatusBar style="auto" />
+      </View>
+    );
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Products:</Text>
-      {products.map(product => (
-        <Text key={product.id}>{product.name} - ${product.price}</Text>
-      ))}
-      <Text>Users:</Text>
-      {users.map(user => (
-        <Text key={user.id}>{user.name} - {user.email}</Text>
-      ))}
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="OpeningScreen">
+        <Stack.Screen name="OpeningScreen" component={OpeningScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: lightTheme.backgroundColor, // Use light theme background
   },
 });
