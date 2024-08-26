@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "nom": "Siège Social | Longueuil, Qc",
+      "latitude": 45.524360,
+      "longitude": -73.527847
+    },
+    {
+      "id": 2,
+      "nom": "SHWAP CLUB | MONTREAL, QC",
+      "latitude": 45.486657,
+      "longitude": -73.586608
+    },
+    {
+      "id": 3,
+      "nom": "LE GARDE-ROBE | Sherbrooke, QC",
+      "latitude": 45.403281,
+      "longitude": -71.935104
+    },
+    {
+      "id": 4,
+      "nom": "T.O. The Good Swap | Toronto, ON",
+      "latitude": 43.654788,
+      "longitude": -79.398520
+    }
+  ]
+  
