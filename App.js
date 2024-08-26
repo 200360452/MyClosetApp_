@@ -1,6 +1,6 @@
 // src/App.js
 import React from 'react';
-import { View, Text, ActivityIndicator, Button } from 'react-native';
+import { View, ActivityIndicator, Button } from 'react-native';
 import { useAuth } from './hooks/useAuth'; // Import the custom auth hook
 import { NavigationContainer } from '@react-navigation/native';
 import AppNavigator from './navigation/AppNavigator'; // Import AppNavigator

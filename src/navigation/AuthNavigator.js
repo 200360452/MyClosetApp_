@@ -1,31 +1,20 @@
+// src/navigation/AuthNavigator.js
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginScreen from '../screens/Auth/LoginScreen';
-import SignUpScreen from '../screens/Auth/SignUpScreen';
+import SignInScreen from '../screens/Auth/SignInScreen'; // Import SignInScreen component
+import SignUpScreen from '../screens/Auth/SignUpScreen'; // Import SignUpScreen component
+import VerifyEmailScreen from '../screens/Auth/VerifyEmailScreen'; // Import VerifyEmailScreen component
 
-const AuthStack = createStackNavigator();
+const Stack = createStackNavigator();
 
-const AuthNavigator = ({ onSkip }) => (
-  <AuthStack.Navigator>
-    <AuthStack.Screen
-      name="Login"
-      component={LoginScreen}
-      options={{ headerShown: false }}
-    />
-    <AuthStack.Screen
-      name="SignUp"
-      component={SignUpScreen}
-      options={{ headerShown: false }}
-    />
-    <AuthStack.Screen
-      name="Skip"
-      component={() => {
-        onSkip();
-        return null; // Redirects to AppNavigator on skip
-      }}
-      options={{ headerShown: false }}
-    />
-  </AuthStack.Navigator>
-);
+const AuthNavigator = ({ onSkip }) => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="SignIn" component={SignInScreen} />
+      <Stack.Screen name="SignUp" component={SignUpScreen} />
+      <Stack.Screen name="VerifyEmail" component={VerifyEmailScreen} />
+    </Stack.Navigator>
+  );
+};
 
 export default AuthNavigator;

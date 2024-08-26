@@ -1,22 +1,29 @@
 // src/screens/OpeningScreen.js
-// src/screens/OpeningScreen.js
 import React from 'react';
-import { View, Text, Image, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
-import globalStyles from '../styles/globalStyles';
-import logo from '../assets/logo.png';
+import { View, Text, Button, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const OpeningScreen = ({ navigation }) => {
-  const handleLogin = () => {
-    navigation.navigate('HomeScreen'); // Example: Navigate to HomeScreen
+const OpeningScreen = () => {
+  const navigation = useNavigation();
+
+  const handleSkip = () => {
+    navigation.navigate('Home');
+  };
+
+  const handleSignIn = () => {
+    navigation.navigate('SignIn');
+  };
+
+  const handleSignUp = () => {
+    navigation.navigate('SignUp');
   };
 
   return (
-    <View style={[styles.container, globalStyles.lightBackground]}>
-      <Image source={logo} style={styles.logo} />
-      <ActivityIndicator size="large" color={globalStyles.lightText.color} />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Get Started</Text>
-      </TouchableOpacity>
+    <View style={styles.container}>
+      <Text style={styles.title}>Welcome to MyCloset</Text>
+      <Button title="Sign In" onPress={handleSignIn} />
+      <Button title="Sign Up" onPress={handleSignUp} />
+      <Button title="Skip" onPress={handleSkip} />
     </View>
   );
 };
@@ -26,21 +33,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 16,
   },
-  logo: {
-    width: 150,
-    height: 150,
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
     marginBottom: 20,
-  },
-  button: {
-    backgroundColor: '#007bff',
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 20,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
   },
 });
 

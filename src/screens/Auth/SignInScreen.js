@@ -1,20 +1,20 @@
-// src/screens/Auth/SignUpScreen.js
+// src/screens/Auth/SignInScreen.js
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const SignUpScreen = () => {
+const SignInScreen = () => {
   const navigation = useNavigation();
 
-  const handleSignUp = () => {
-    // Sign-up logic
+  const handleSignIn = () => {
+    // Sign-in logic
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Sign Up</Text>
-      {/* Add sign-up form */}
-      <Button title="Sign Up" onPress={handleSignUp} />
+      <Text style={styles.title}>Sign In</Text>
+      {/* Add sign-in form */}
+      <Button title="Sign In" onPress={handleSignIn} />
     </View>
   );
 };
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUpScreen;
+export default SignInScreen;

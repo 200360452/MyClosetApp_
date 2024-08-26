@@ -1,19 +1,17 @@
 // src/styles/globalStyles.js
 
-// src/styles/globalStyles.js
-
 import { StyleSheet } from 'react-native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
 // Define light and dark themes
 export const lightTheme = {
-  backgroundColor: '#f0f0f0', // Changed to eggshell for a minimalist look
-  color: '#333333', // Dark charcoal for text
+  backgroundColor: '#f0f0f0', // Light background color
+  color: '#333333', // Dark text color
 };
 
 export const darkTheme = {
-  backgroundColor: '#333333', // Dark charcoal for background
-  color: '#f0f0f0', // Eggshell for text
+  backgroundColor: '#333333', // Dark background color
+  color: '#f0f0f0', // Light text color
 };
 
 // Export icon components for use in your app
