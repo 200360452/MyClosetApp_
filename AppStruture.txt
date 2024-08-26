@@ -10,14 +10,14 @@ MyClosetApp_
 │   │   ├── database/  # Database-related files
 │   ├── utils/         # Utility functions
 │   ├── constants/     # Constants like config values
-│   ├── App.js         # Main app entry point
-│   └── index.js       # Main entry file
 ├── zz_end/ 
 │   ├── node_modules/      # Dependencies (hidden in VSCode)
 │   ├── .gitignore         # Specifies files and directories to ignore in Git
 dependencies
 ├── package-lock.json       # Project metadata and
 ├── package.json       # Project metadata and dependencies
+
+├── App.js         # Main app entry point
 
 └── AppStructure.txt    # Project strcuture
 └── README.md          # Project documentation

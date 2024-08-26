@@ -4,7 +4,6 @@ Script to initialize x populate the database x tables, using Expo SQLiteProvider
 By: Valérie Dupuy
 Programmation d'ApplicationsMobiles _CLG_HÉ2024
 */ 
-// db.js
 import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase('store.db');
