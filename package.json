@@ -1,7 +1,8 @@
 {
   "name": "myclosetapp",
   "version": "1.0.0",
-  "main": "expo/AppEntry.js",
+  "main": "App.js",
+  "type": "module",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
