@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getUser, authenticateUser } from '../data/user'; // Adjust path as needed
+import { getUser, authenticateUser } from '../services/data/user'; // Adjust path as needed
 
 export const useAuth = () => {
   const [user, setUser] = useState(null);
