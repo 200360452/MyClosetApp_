@@ -1,30 +1,35 @@
 // src/screens/OpeningScreen.js
-import React from 'react';
-import { View, Animated, Easing, StyleSheet, Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Image, StyleSheet } from 'react-native';
+import { initializeDatabase } from '../data/db'; // Ensure the path to db.js is correct
 
-const OpeningScreen = () => {
-  const spinValue = new Animated.Value(0);
+const OpeningScreen = ({ navigation }) => {
+  const [showLoader, setShowLoader] = useState(false);
 
-  Animated.loop(
-    Animated.timing(spinValue, {
-      toValue: 1,
-      duration: 3000,
-      easing: Easing.linear,
-      useNativeDriver: true,
-    })
-  ).start();
+  useEffect(() => {
+    // Initialize the database
+    initializeDatabase();
 
-  const spin = spinValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '360deg'],
-  });
+    // Show loader after 2 seconds
+    const timer = setTimeout(() => {
+      setShowLoader(true);
+      // Navigate to the next screen after loader
+      navigation.replace('HomeScreen'); // Replace 'HomeScreen' with your actual next screen name
+    }, 2000);
+
+    return () => clearTimeout(timer); // Cleanup timer on unmount
+  }, [navigation]);
 
   return (
     <View style={styles.container}>
-      <Animated.Image
-        source={require('../assets/favicon.png')}
-        style={[styles.logo, { transform: [{ rotate: spin }] }]}
-      />
+      {!showLoader ? (
+        <Image 
+          source={require('../assets/favicon.png')} // Ensure the path to your favicon.png is correct
+          style={styles.logo}
+        />
+      ) : (
+        <ActivityIndicator size="large" color="#0000ff" /> // Show loader while transitioning
+      )}
     </View>
   );
 };
@@ -32,14 +37,14 @@ const OpeningScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'orange', // Orange background color
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFA500', // Orange background
   },
   logo: {
-    width: 150,
-    height: 150,
-    tintColor: '#D3D3D3', // Light grey logo color
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
   },
 });
 

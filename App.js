@@ -1,47 +1,29 @@
 // src/App.js
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import OpeningScreen from './screens/OpeningScreen';
-import { initializeDatabase } from './data/db';
-import AppNavigator from './navigation/AppNavigator';
-import AuthNavigator from './navigation/AuthNavigator';
-import { useAuth } from './hooks/useAuth'; // Custom hook for authentication
+import OpeningScreen from './components/OpeningScreen'; // Adjust the path if needed
+import Loader from './components/Loader'; // Adjust the path if needed
+import { initializeDatabase } from './data/db'; // Ensure this import works
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const { user, loading, error, skipAuth } = useAuth(); // Destructure user and auth functions
+  const [showLoader, setShowLoader] = useState(false);
 
   useEffect(() => {
-    const setupApp = async () => {
-      try {
-        await initializeDatabase();
-      } catch (error) {
-        console.error('Failed to initialize the database:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    // Trigger database initialization
+    initializeDatabase();
 
-    setupApp();
+    // Show loader after 2 seconds
+    const timer = setTimeout(() => {
+      setShowLoader(true);
+    }, 2000);
+
+    return () => clearTimeout(timer); // Cleanup timer on unmount
   }, []);
 
-  if (isLoading || loading) {
-    return <OpeningScreen />;
-  }
-
-  if (error) {
-    // Handle error case
-    return <View><Text>Error: {error}</Text></View>;
-  }
-
   return (
-    <NavigationContainer>
-      {user ? (
-        <AppNavigator user={user} />
-      ) : (
-        <AuthNavigator onSkip={() => skipAuth()} />
-      )}
-    </NavigationContainer>
+    <View style={{ flex: 1 }}>
+      {!showLoader ? <OpeningScreen /> : <Loader />}
+    </View>
   );
 };
 
