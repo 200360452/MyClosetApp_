@@ -1,34 +1,53 @@
 // src/screens/HomeScreen.js
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { View, Text, Image, ScrollView, StyleSheet, Button } from 'react-native';
+import HeroBanner from '../components/HeroBanner'; // Assume this is a carousel component
+import InputField from '../components/InputField'; // Text input component
+import SearchBar from '../components/SearchBar'; // Search bar component
+import ProductCard from '../components/ProductCard'; // Component to display individual product
+import { useTheme } from '../hooks/useTheme'; // Custom hook to get the theme
 
 const HomeScreen = () => {
-  const navigation = useNavigation();
+  const { theme } = useTheme(); // Custom hook to get the theme
 
-  const handleProductList = () => {
-    navigation.navigate('ProductList');
-  };
+  // Replace with actual data fetching logic
+  const products = []; // Fetch from service or state
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Home Screen</Text>
-      <Button title="View Products" onPress={handleProductList} />
-    </View>
+    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
+      <HeroBanner />
+      
+      {/* Search Section */}
+      <View style={styles.searchSection}>
+        <Button title="Filter" onPress={() => { /* Filter action */ }} />
+        <SearchBar />
+        <InputField placeholder="Search..." />
+      </View>
+
+      {/* Product List */}
+      <View style={styles.productList}>
+        {products.length > 0 ? (
+          products.map(product => <ProductCard key={product.id} product={product} />)
+        ) : (
+          <Text>No products available</Text>
+        )}
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
+  searchSection: {
+    padding: 16,
+    backgroundColor: '#FFFFFF', // Adjust as needed
+    borderBottomColor: '#DDDDDD',
+    borderBottomWidth: 1,
+  },
+  productList: {
+    padding: 16,
   },
 });
 

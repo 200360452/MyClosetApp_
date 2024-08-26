@@ -4,32 +4,33 @@
 */
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
-import AdminNavigator from './AdminNavigator';
-import ClientNavigator from './ClientNavigator';
+import HomeScreen from '../screens/HomeScreen';
+import SearchScreen from '../screens/SearchScreen';
+import ProductListScreen from '../screens/ProductListScreen';
+import { useTheme } from '../hooks/useTheme';
 
-const BottomTab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
-const AppNavigator = ({ user }) => {
-  const BottomTabNavigator = () => (
-    <BottomTab.Navigator>
-      {user.admin ? (
-        <BottomTab.Screen
-          name="Admin"
-          component={AdminNavigator}
-          options={{ headerShown: false }}
-        />
-      ) : (
-        <BottomTab.Screen
-          name="Client"
-          component={ClientNavigator}
-          options={{ headerShown: false }}
-        />
-      )}
-    </BottomTab.Navigator>
+const AppNavigator = () => {
+  const { theme } = useTheme(); // Custom hook to get the theme
+
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: {
+          backgroundColor: theme.background,
+        },
+        headerStyle: {
+          backgroundColor: theme.headerBackground,
+        },
+        headerTintColor: theme.headerTextColor,
+      }}
+    >
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Search" component={SearchScreen} />
+      <Tab.Screen name="Products" component={ProductListScreen} />
+    </Tab.Navigator>
   );
-
-  return <BottomTabNavigator />;
 };
 
 export default AppNavigator;

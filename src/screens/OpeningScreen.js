@@ -1,29 +1,30 @@
 // src/screens/OpeningScreen.js
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { View, Animated, Easing, StyleSheet, Image } from 'react-native';
 
 const OpeningScreen = () => {
-  const navigation = useNavigation();
+  const spinValue = new Animated.Value(0);
 
-  const handleSkip = () => {
-    navigation.navigate('Home');
-  };
+  Animated.loop(
+    Animated.timing(spinValue, {
+      toValue: 1,
+      duration: 3000,
+      easing: Easing.linear,
+      useNativeDriver: true,
+    })
+  ).start();
 
-  const handleSignIn = () => {
-    navigation.navigate('SignIn');
-  };
-
-  const handleSignUp = () => {
-    navigation.navigate('SignUp');
-  };
+  const spin = spinValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'],
+  });
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome to MyCloset</Text>
-      <Button title="Sign In" onPress={handleSignIn} />
-      <Button title="Sign Up" onPress={handleSignUp} />
-      <Button title="Skip" onPress={handleSkip} />
+      <Animated.Image
+        source={require('../assets/favicon.png')}
+        style={[styles.logo, { transform: [{ rotate: spin }] }]}
+      />
     </View>
   );
 };
@@ -33,12 +34,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 16,
+    backgroundColor: '#FFA500', // Orange background
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
+  logo: {
+    width: 150,
+    height: 150,
+    tintColor: '#D3D3D3', // Light grey logo color
   },
 });
 

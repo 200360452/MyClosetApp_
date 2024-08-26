@@ -1,46 +1,46 @@
 // src/App.js
-import React from 'react';
-import { View, ActivityIndicator, Button } from 'react-native';
-import { useAuth } from './hooks/useAuth'; // Import the custom auth hook
-import { NavigationContainer } from '@react-navigation/native';
-import AppNavigator from './navigation/AppNavigator'; // Import AppNavigator
-import AuthNavigator from './navigation/AuthNavigator'; // Import AuthNavigator (for login/signup)
-import ThemeToggle from './components/common/ThemeToggle'; // Import ThemeToggle component
-import LanguageSwitch from './components/common/LanguageSwitch'; // Import LanguageSwitch component
-import styles from './styles/globalStyles'; // Import global styles
+import React, { useEffect, useState } from 'react';
+import { View } from 'react-native';
+import OpeningScreen from './screens/OpeningScreen';
+import { initializeDatabase } from './data/db';
+import AppNavigator from './navigation/AppNavigator';
+import AuthNavigator from './navigation/AuthNavigator';
+import { useAuth } from './hooks/useAuth'; // Custom hook for authentication
 
 const App = () => {
-  const { user, loading, error, skipAuth } = useAuth(); // Destructure user and auth functions from the hook
+  const [isLoading, setIsLoading] = useState(true);
+  const { user, loading, error, skipAuth } = useAuth(); // Destructure user and auth functions
 
-  if (loading) {
-    return (
-      <View style={[styles.container, styles.center]}>
-        <ActivityIndicator size="large" color="#0000ff" />
-      </View>
-    );
+  useEffect(() => {
+    const setupApp = async () => {
+      try {
+        await initializeDatabase();
+      } catch (error) {
+        console.error('Failed to initialize the database:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    setupApp();
+  }, []);
+
+  if (isLoading || loading) {
+    return <OpeningScreen />;
   }
 
   if (error) {
-    return (
-      <View style={[styles.container, styles.center]}>
-        <Text>Error: {error}</Text>
-        <Button title="Retry" onPress={() => { /* Retry logic */ }} />
-      </View>
-    );
+    // Handle error case
+    return <View><Text>Error: {error}</Text></View>;
   }
 
   return (
     <NavigationContainer>
-      <View style={styles.appContainer}>
-        {/* Place ThemeToggle and LanguageSwitch components */}
-        <ThemeToggle />
-        <LanguageSwitch />
-        {user ? (
-          <AppNavigator user={user} />
-        ) : (
-          <AuthNavigator onSkip={() => skipAuth()} />
-        )}
-      </View>
+      {user ? (
+        <AppNavigator user={user} />
+      ) : (
+        <AuthNavigator onSkip={() => skipAuth()} />
+      )}
     </NavigationContainer>
   );
 };
