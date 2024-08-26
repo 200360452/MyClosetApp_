@@ -1,50 +1,48 @@
-// App.js
-// App.js
+// src/App.js
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, ActivityIndicator } from 'react-native';
+import { View, Text, ActivityIndicator, Button } from 'react-native';
+import { useAuth } from './hooks/useAuth'; // Import the custom auth hook
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import OpeningScreen from './src/screens/OpeningScreen';
-import HomeScreen from './src/screens/HomeScreen';
-import { lightTheme, darkTheme } from './src/styles/globalStyles'; // Import themes if needed
+import AppNavigator from './navigation/AppNavigator'; // Import AppNavigator
+import AuthNavigator from './navigation/AuthNavigator'; // Import AuthNavigator (for login/signup)
+import ThemeToggle from './components/common/ThemeToggle'; // Import ThemeToggle component
+import LanguageSwitch from './components/common/LanguageSwitch'; // Import LanguageSwitch component
+import styles from './styles/globalStyles'; // Import global styles
 
-const Stack = createStackNavigator();
+const App = () => {
+  const { user, loading, error, skipAuth } = useAuth(); // Destructure user and auth functions from the hook
 
-export default function App() {
-  const [isLoading, setIsLoading] = React.useState(true);
-
-  React.useEffect(() => {
-    // Simulate a loading delay
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000); // Adjust as needed
-  }, []);
-
-  if (isLoading) {
+  if (loading) {
     return (
-      <View style={styles.container}>
-        <ActivityIndicator size="large" color={lightTheme.color} />
-        <StatusBar style="auto" />
+      <View style={[styles.container, styles.center]}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View style={[styles.container, styles.center]}>
+        <Text>Error: {error}</Text>
+        <Button title="Retry" onPress={() => { /* Retry logic */ }} />
       </View>
     );
   }
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="OpeningScreen">
-        <Stack.Screen name="OpeningScreen" component={OpeningScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      </Stack.Navigator>
+      <View style={styles.appContainer}>
+        {/* Place ThemeToggle and LanguageSwitch components */}
+        <ThemeToggle />
+        <LanguageSwitch />
+        {user ? (
+          <AppNavigator user={user} />
+        ) : (
+          <AuthNavigator onSkip={() => skipAuth()} />
+        )}
+      </View>
     </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: lightTheme.backgroundColor, // Use light theme background
-  },
-});
+export default App;

@@ -1,6 +1,6 @@
 /**navigation/AdminNavigator.js
  * Stack navigation for Client functionalities, including produStack navigation for Client functionalities, including viewing products, managing the cart, shipping/curbside pickup (warehouses/locations/maps) and checking out.  
- * 
+ * Interacts with: ClientHomeScreen.js, ProductListScreen.js, ProductDetailScreen.js, CartScreen.js, CheckoutScreen.js, OrdersScreen.js 
  * 
 */
 import React from 'react';

@@ -1,0 +1,75 @@
+Certainly! Here's how we can organize the three profiles into tables based on your existing files and requirements. We'll ensure that file names remain consistent and no new files are created or renamed.
+
+### 1. General (Guest) Profile Flow
+
+| **File**                   | **Purpose**                                             | **Interacts with**                                   | **Navigates to**                                                |
+|----------------------------|---------------------------------------------------------|------------------------------------------------------|------------------------------------------------------------------|
+| **OpeningScreen.js**       | Initial loading and choice options                     | `LanguageSwitch.js`, `ThemeToggle.js`                | `SignInScreen.js`, `SignUpScreen.js`, `HomeScreen.js`           |
+| **SignInScreen.js**        | User sign-in                                             | `InputFields.js`                                    | `ClientDash.js` (on sign-in), `HomeScreen.js` (if choosing guest) |
+| **SignUpScreen.js**        | User sign-up                                             | `InputFields.js`                                    | `VerifyEmailScreen.js`                                          |
+| **VerifyEmailScreen.js**   | Email verification                                       | `Button.js`                                         | `ClientDash.js` (on verification), `SignInScreen.js` (if fails) |
+| **HomeScreen.js**          | Main screen for general users (product listings, etc.)  | `ProductList.js`, `SearchBar.js`, `Filter.js`       | `ProductDetailScreen.js`, `SignInScreen.js`, `SignUpScreen.js`, `CartScreen.js` |
+| **ProductDetailScreen.js** | Detailed view of a product                              | `Cart.js`                                           | `CartScreen.js` (if adding to cart)                              |
+| **CartScreen.js**          | Displays items in the cart                              | `ProductList.js`, `ProductDetailScreen.js`          | `CheckOutScreen.js`                                              |
+| **CheckOutScreen.js**      | Checkout and payment process                            | `Cart.js`                                           | `ThankYouScreen.js`                                             |
+| **ThankYouScreen.js**      | Purchase confirmation                                   | None                                                | None                                                             |
+
+#### **Components**
+
+| **File**                   | **Purpose**                                             | **Interacts with**                                   |
+|----------------------------|---------------------------------------------------------|------------------------------------------------------|
+| **ProductItem.js**         | Displays a single product item                         | `ProductDetailScreen.js`, `CartScreen.js`            |
+| **Cart.js**                | Component for cart operations                          | `CartScreen.js`, `CheckOutScreen.js`                 |
+| **SearchBar.js**           | Search input for filtering products                    | `ProductList.js`, `HomeScreen.js`                   |
+| **Filter.js**              | Filtering options for product list                     | `ProductList.js`, `HomeScreen.js`                   |
+| **LanguageSwitch.js**      | Switches between languages (EN/FR)                     | `OpeningScreen.js`, `HomeScreen.js`                |
+| **ThemeToggle.js**         | Switches between light and dark themes                 | `OpeningScreen.js`, `HomeScreen.js`                |
+
+### 2. Client Profile Flow
+
+| **File**                   | **Purpose**                                             | **Interacts with**                                   | **Navigates to**                                                |
+|----------------------------|---------------------------------------------------------|------------------------------------------------------|------------------------------------------------------------------|
+| **ClientDash.js**          | Dashboard for client users                             | `CartScreen.js`, `CheckOutScreen.js`, `ProductList.js` | `CartScreen.js`, `ProductList.js`, `CheckOutScreen.js`         |
+| **CartScreen.js**          | Displays items in the cart                              | `ProductList.js`, `ProductDetailScreen.js`          | `CheckOutScreen.js`                                              |
+| **CheckOutScreen.js**      | Checkout and payment process                            | `Cart.js`                                           | `ThankYouScreen.js`                                             |
+| **ThankYouScreen.js**      | Purchase confirmation                                   | None                                                | None                                                             |
+| **ProductList.js**         | Displays list of products with search/filter options   | `Cart.js`, `ProductDetailScreen.js`                 | `ProductDetailScreen.js`                                         |
+| **ProductDetail.js**       | Detailed view of a product                              | `Cart.js`                                           | `CartScreen.js` (if adding to cart)                              |
+
+#### **Components**
+
+| **File**                   | **Purpose**                                             | **Interacts with**                                   |
+|----------------------------|---------------------------------------------------------|------------------------------------------------------|
+| **Cart.js**                | Component for cart operations                          | `CartScreen.js`, `CheckOutScreen.js`                 |
+| **Checkout.js**            | Component for checkout operations                      | `CheckOutScreen.js`                                 |
+| **ClientProfile.js**       | Displays and manages client profile details            | `ClientDash.js`                                     |
+| **ProductDetail.js**       | Displays product details                               | `ProductList.js`, `CartScreen.js`                   |
+| **ProductList.js**         | Displays list of products                              | `ProductDetail.js`, `SearchBar.js`, `Filter.js`     |
+
+### 3. Admin Profile Flow
+
+| **File**                   | **Purpose**                                             | **Interacts with**                                   | **Navigates to**                                                |
+|----------------------------|---------------------------------------------------------|------------------------------------------------------|------------------------------------------------------------------|
+| **AdminDashScreen.js**     | Dashboard for admin users                              | `ManageProducts.js`, `OrdersScreen.js`, `InventoryScreen.js` | `ManageProducts.js`, `OrdersScreen.js`, `InventoryScreen.js`    |
+| **AdminSettingsScreen.js** | Allows admin to modify settings (password, theme, etc.) | `InputFields.js`, `ThemeToggle.js`                  | None                                                             |
+| **InventoryScreen.js**     | Displays and manages the inventory list                | `ItemEditScreen.js`, `ManageProducts.js`            | `ItemEditScreen.js` (if editing an item)                         |
+| **ManageProducts.js**      | Add/edit products, bulk operations                     | `ProductForm.js`, `ImagePickerButton.js`            | `ItemEditScreen.js` (for editing)                                |
+| **ItemEditScreen.js**      | Detailed form to edit a specific product                | `ProductForm.js`, `ImagePickerButton.js`            | `ManageProducts.js` (if saving changes)                         |
+| **OrdersScreen.js**        | Displays and manages orders                            | `OrderDetailScreen.js`                              | None                                                             |
+
+#### **Components**
+
+| **File**                   | **Purpose**                                             | **Interacts with**                                   |
+|----------------------------|---------------------------------------------------------|------------------------------------------------------|
+| **AdminProfile.js**        | Displays admin profile details                         | `AdminDashScreen.js`                                |
+| **CrossPostForm.js**       | Not available yet, assumed to be a form for cross-posting | N/A                                                |
+| **ImagePickerButton.js**   | Allows selection of images for products                | `ManageProducts.js`, `ItemEditScreen.js`           |
+| **ProductForm.js**         | Form for adding/editing product details                 | `ManageProducts.js`, `ItemEditScreen.js`           |
+| **ProductItem.js**         | Displays a product item in lists or grids               | `InventoryScreen.js`, `ManageProducts.js`          |
+| **ScanQRCode.js**          | Not available yet, for scanning QR codes                | N/A                                                |
+| **Filter.js**              | Filtering options for products                          | `InventoryScreen.js`                               |
+| **InputFields.js**         | Reusable input field components                          | `SignInScreen.js`, `SignUpScreen.js`, `AdminSettingsScreen.js` |
+| **SearchBar.js**           | Search input for filtering products                     | `InventoryScreen.js`                               |
+| **Sort.js**                | Sorting options for product lists                       | `InventoryScreen.js`                               |
+
+This organization should help keep everything straightforward and aligned with your existing file structure.
