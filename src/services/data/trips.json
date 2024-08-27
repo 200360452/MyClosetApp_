@@ -1,0 +1,49 @@
+[
+  {
+    "cruiseLine": "Norwegian",
+    "cruises": [
+      {"depart": "Rome", "numberOfDays": "7", "destination": "Mediterranean Sea", "showOnHomePage": 1},
+      {"depart": "Miami", "numberOfDays": "9", "destination": "Caribbean", "showOnHomePage": 1},
+      {"depart": "Dubai", "numberOfDays": "11", "destination": "Asia", "showOnHomePage": 0},
+      {"depart": "Dubai", "numberOfDays": "5", "destination": "Middle East", "showOnHomePage": 0},
+      {"depart": "Barcelona", "numberOfDays": "7", "destination": "Central Africa", "showOnHomePage": 0},
+      {"depart": "Barcelona", "numberOfDays": "13", "destination": "Northern Europe", "showOnHomePage": 0}
+    ]
+  },
+  {
+    "cruiseLine": "Carnival Cruise Line",
+    "cruises": [
+      {"depart": "Seattle, WA", "numberOfDays": "15", "destination": "Alaska", "showOnHomePage": 1},
+      {"depart": "Orlando, FL", "numberOfDays": "5", "destination": "Bahamas", "showOnHomePage": 1},
+      {"depart": "Miami, FL", "numberOfDays": "7", "destination": "Mexico", "showOnHomePage": 0},
+      {"depart": "Sydney, Australia", "numberOfDays": "9", "destination": "New Zealand", "showOnHomePage": 0}
+    ]
+  },
+  {
+    "cruiseLine": "Celebrity",
+    "cruises": [
+      {"depart": "Miami, FL", "numberOfDays": "7", "destination": "Caribbean", "showOnHomePage": 1},
+      {"depart": "Singapore", "numberOfDays": "12", "destination": "Asia", "showOnHomePage": 0},
+      {"depart": "Vancouver, BC", "numberOfDays": "7", "destination": "Alaska", "showOnHomePage": 1},
+      {"depart": "Miami, FL", "numberOfDays": "12", "destination": "Mexico", "showOnHomePage": 0}
+    ]
+  },
+  {
+    "cruiseLine": "Royal Caribbean",
+    "cruises": [
+      {"depart": "Vancouver, BC", "numberOfDays": "7", "destination": "Alaska", "showOnHomePage": 0},
+      {"depart": "Orlando, FL", "numberOfDays": "5", "destination": "Bahamas", "showOnHomePage": 1},
+      {"depart": "Galveston, TX", "numberOfDays": "7", "destination": "Mexico", "showOnHomePage": 1},
+      {"depart": "Sydney, Australia", "numberOfDays": "7", "destination": "New Zealand", "showOnHomePage": 0}
+    ]
+  },
+  {
+    "cruiseLine": "Holland America Line",
+    "cruises": [
+      {"depart": "Orlando, FL", "numberOfDays": "5", "destination": "Bahamas", "showOnHomePage": 1},
+      {"depart": "Miami, FL", "numberOfDays": "7", "destination": "Mexico", "showOnHomePage": 1}
+    ]
+  }
+]
+
+

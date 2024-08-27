@@ -2,12 +2,78 @@
 //Exemple 4 de React NativeDouble Navigation
 //Bootom tab navigation et stack navigation
 //Le 8 mai, 2024
-import { StyleSheet, Text, View, Pressable, Button } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+// src/navigation/Navigation.js
+
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
-import Ionicons from '@expo/vector-icons/Ionicons'
+// Import screens
+import HomeScreen from '../screens/HomeScreen';
+import SearchScreen from '../screens/SearchScreen';
+import AccountScreen from '../screens/AccountScreen';
+import AboutScreen from '../screens/AboutScreen';
+import ContactScreen from '../screens/ContactScreen';
+
+const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+const HomeStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="Home" component={HomeScreen} />
+    <Stack.Screen name="About" component={AboutScreen} />
+  </Stack.Navigator>
+);
+
+const AccountStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="Account" component={AccountScreen} />
+    <Stack.Screen name="Contact" component={ContactScreen} />
+  </Stack.Navigator>
+);
+
+export const MainTabNavigator = () => (
+  <Tab.Navigator>
+    <Tab.Screen 
+      name="Home" 
+      component={HomeStack}
+      options={{
+        tabBarIcon: ({ size, color }) => <Ionicons name="home" size={size} color={color} />
+      }} 
+    />
+    <Tab.Screen 
+      name="Search" 
+      component={SearchScreen}
+      options={{
+        tabBarIcon: ({ size, color }) => <Ionicons name="search" size={size} color={color} />
+      }} 
+    />
+    <Tab.Screen 
+      name="Account" 
+      component={AccountStack}
+      options={{
+        tabBarIcon: ({ size, color }) => <Ionicons name="person" size={size} color={color} />
+      }} 
+    />
+  </Tab.Navigator>
+);
+
+
+/**
+ * Stack Navigator Screens
+const ParamHomeScreen = ({ navigation }) => (
+  <View style={styles.container}>
+    <Button title="Wifi" onPress={() => navigation.navigate('Wifi')} />
+    <Button title="Bluetooth" onPress={() => navigation.navigate('Bluetooth')} />
+  </View>
+);
+
+const WifiParamScreen = () => (
+  <View style={styles.container}>
+    <Text>Wifi Settings</Text>
+  </View>
+);
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -65,3 +131,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+*/
