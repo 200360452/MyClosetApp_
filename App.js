@@ -1,3 +1,21 @@
+// src/App.js
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { MainTabNavigator } from './navigation/Navigation';
+import { ThemeProvider } from './hooks/useTheme'; 
+
+const App = () => {
+  return (
+    <ThemeProvider>
+      <NavigationContainer>
+        <MainTabNavigator />
+      </NavigationContainer>
+    </ThemeProvider>
+  );
+};
+
+export default App;
+
 /**
  * 
 // src/App.js
@@ -107,19 +125,3 @@ const styles = StyleSheet.create({
   },
 });
 */
-
-// src/App.js
-
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { MainTabNavigator } from './src/navigation/Navigation';
-
-const App = () => {
-  return (
-    <NavigationContainer>
-      <MainTabNavigator />
-    </NavigationContainer>
-  );
-};
-
-export default App;

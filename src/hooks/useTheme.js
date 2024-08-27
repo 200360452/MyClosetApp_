@@ -1,34 +1,20 @@
 //hooks/UseTheme.js 
+import React, { createContext, useContext } from 'react';
+import { useTheme as useThemeHook } from './useTheme';
 
-import { useState, useEffect } from 'react';
-import { Appearance } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// Create a Context for the theme
+const ThemeContext = createContext();
 
-export const useTheme = () => {
-  const [theme, setTheme] = useState('light'); 
-  
-  // Load the theme from storage or system preference on mount
-  useEffect(() => {
-    const loadTheme = async () => {
-      const savedTheme = await AsyncStorage.getItem('theme');
-      if (savedTheme) {
-        setTheme(savedTheme);
-      } else {
-        const systemTheme = Appearance.getColorScheme(); // Get system theme
-        setTheme(systemTheme || 'light');
-      }
-    };
-    loadTheme();
-  }, []);
+// ThemeProvider component
+export const ThemeProvider = ({ children }) => {
+  const { theme, toggleTheme } = useThemeHook();
 
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    AsyncStorage.setItem('theme', newTheme); // Save the selected theme
-  };
-
-  return {
-    theme,
-    toggleTheme,
-  };
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
+
+// Custom hook to use the theme context
+export const useTheme = () => useContext(ThemeContext);

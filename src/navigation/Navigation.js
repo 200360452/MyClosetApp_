@@ -34,6 +34,8 @@ const AccountStack = () => (
   <Stack.Navigator>
     <Stack.Screen name="Account" component={AccountScreen} />
     <Stack.Screen name="Contact" component={ContactScreen} />
+    <Stack.Screen name="SignIn" component={SignInScreen} />
+    <Stack.Screen name="SignUp" component={SignUpScreen} />
   </Stack.Navigator>
 );
 
