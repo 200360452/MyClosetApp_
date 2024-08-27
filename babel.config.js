@@ -1,6 +1,9 @@
 module.exports = {
-  presets: ['module:metro-react-native-babel-preset'],
+  presets: [
+    'module:metro-react-native-babel-preset',
+    '@babel/preset-env', //  if using ECMAScript features
+  ],
   plugins: [
-    // Add any additional Babel plugins you need here
+    '@babel/plugin-transform-modules-commonjs', // helps Babel handle ECMAScript modules
   ],
 };

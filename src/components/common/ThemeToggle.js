@@ -1,17 +1,25 @@
 // components/ThemeToggle.js
 import React from 'react';
-import { Button, View } from 'react-native';
-import { useTheme } from '../../hooks/useTheme'; // Import custom hook
-
+import { View, Button, StyleSheet } from 'react-native';
+import { useTheme } from '../hooks/useTheme'; 
 const ThemeToggle = () => {
-  const { theme, toggleTheme } = useTheme(); // Use custom hook for theme
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <View>
-      <Button title={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} Mode`} onPress={toggleTheme} />
+    <View style={styles.container}>
+      <Button 
+        title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`} 
+        onPress={toggleTheme} 
+      />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 10,
+  },
+});
 
 export default ThemeToggle;
 

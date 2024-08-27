@@ -1,10 +1,11 @@
 // src/screens/HomeScreen.js
 import React from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, Button } from 'react-native';
-import HeroBanner from '../components/HeroBanner'; // Assume this is a carousel component
-import InputField from '../components/InputField'; // Text input component
+import HeroBanner from '../components/Common/HeroBanner'; // Hero carousel component
+import InputField from '../components/Common/InputField'; 
 import SearchBar from '../components/SearchBar'; // Search bar component
-import ProductCard from '../components/ProductCard'; // Component to display individual product
+import ProductList from '../components/Shopping/ProductList'; // Component to display complete list of product, organized by default by the most recent
+import ProductDetail from '../components/Shopping/ProductDetail'; // Component to display individual product
 import { useTheme } from '../hooks/useTheme'; // Custom hook to get the theme
 
 const HomeScreen = () => {
