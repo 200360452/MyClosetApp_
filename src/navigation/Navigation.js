@@ -20,50 +20,56 @@ import AccountScreen from '../screens/Auth/AccountScreen';
 import SignInScreen from '../screens/Auth/SignInScreen';
 import SignUpScreen from '../screens/Auth/SignUpScreen';
 
+//// Define bottom tab and stack navigators
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
+// Home Stack Navigator
 const HomeStack = () => (
   <Stack.Navigator>
     <Stack.Screen name="Home" component={HomeScreen} />
     <Stack.Screen name="About" component={AboutScreen} />
+    <Stack.Screen name="Contact" component={ContactScreen} />
+    <Stack.Screen name="ProductList" component={ProductList} /> {/* Product list screen */}
   </Stack.Navigator>
 );
 
+// Account Stack Navigator
 const AccountStack = () => (
   <Stack.Navigator>
     <Stack.Screen name="Account" component={AccountScreen} />
-    <Stack.Screen name="Contact" component={ContactScreen} />
     <Stack.Screen name="SignIn" component={SignInScreen} />
     <Stack.Screen name="SignUp" component={SignUpScreen} />
   </Stack.Navigator>
 );
-
-export const MainTabNavigator = () => (
+// Main Tab Navigator
+const MainTabNavigator = () => (
   <Tab.Navigator>
     <Tab.Screen 
       name="Home" 
       component={HomeStack}
       options={{
-        tabBarIcon: ({ size, color }) => <Ionicons name="home" size={size} color={color} />
+        tabBarIcon: ({ size, color }) => <Ionicons name="home" size={size} color={color} />,
       }} 
     />
     <Tab.Screen 
       name="Search" 
       component={SearchScreen}
       options={{
-        tabBarIcon: ({ size, color }) => <Ionicons name="search" size={size} color={color} />
+        tabBarIcon: ({ size, color }) => <Ionicons name="search" size={size} color={color} />,
       }} 
     />
     <Tab.Screen 
       name="Account" 
       component={AccountStack}
       options={{
-        tabBarIcon: ({ size, color }) => <Ionicons name="person" size={size} color={color} />
+        tabBarIcon: ({ size, color }) => <Ionicons name="person" size={size} color={color} />,
       }} 
     />
   </Tab.Navigator>
 );
+
+export default MainTabNavigator;
 
 
 /**

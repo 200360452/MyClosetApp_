@@ -1,12 +1,15 @@
 // src/App.js
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { MainTabNavigator } from './navigation/Navigation';
-import { ThemeProvider } from './hooks/useTheme'; 
+import MainTabNavigator from './navigation/Navigation'; // Import the main tab navigator
+import { useTheme } from './hooks/UseTheme'; // Custom theme hook
+import { ThemeProvider } from './context/ThemeContext'; // If using a theme provider context
 
 const App = () => {
+  const { theme } = useTheme(); // Get the current theme
+
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={theme}> {/* Wrap with theme provider if you have one */}
       <NavigationContainer>
         <MainTabNavigator />
       </NavigationContainer>
