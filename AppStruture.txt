@@ -10,9 +10,6 @@ MyClosetApp_
 │   │   ├── database/  # Database-related files
 │   ├── utils/         # Utility functions
 │   ├── constants/     # Constants like config values
-├── zz_end/ 
-│   ├── node_modules/      # Dependencies (hidden in VSCode)
-│   ├── .gitignore         # Specifies files and directories to ignore in Git
 dependencies
 ├── package-lock.json       # Project metadata and
 ├── package.json       # Project metadata and dependencies
