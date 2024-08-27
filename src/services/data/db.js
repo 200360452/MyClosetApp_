@@ -9,6 +9,7 @@ import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase('store.db');
 
+// Initialize the database
 export const initializeDatabase = () => {
   db.transaction(tx => {
     // Creating the user table
@@ -18,9 +19,9 @@ export const initializeDatabase = () => {
         name TEXT,
         email TEXT UNIQUE,
         password TEXT,
-        admin INTEGER DEFAULT 0
+        role INTEGER DEFAULT 0 CHECK(role IN (0, 1, 2))  -- Constraint to ensure role is 0, 1, or 2
       );`,
-      [], // No parameters
+      [],
       () => console.log('User table created or already exists'),
       (tx, error) => {
         console.error('Error creating user table:', error);
@@ -77,11 +78,12 @@ export const initializeDatabase = () => {
   });
 };
 
+// Populate users with example data
 export const populateUsers = () => {
   db.transaction(tx => {
     tx.executeSql(
-      'INSERT OR IGNORE INTO users (name, email, password, admin) VALUES (?, ?, ?, ?)',
-      ['admin', 'admin@example.com', 'password', 1],  // Ensure to hash the password in production
+      'INSERT OR IGNORE INTO users (name, email, password, role) VALUES (?, ?, ?, ?)',
+      ['admin', 'admin@example.com', 'password', 2],  // Admin role
       () => console.log('Admin user inserted or already exists'),
       (tx, error) => {
         console.error('Error inserting admin user:', error);
@@ -89,11 +91,20 @@ export const populateUsers = () => {
       }
     );
     tx.executeSql(
-      'INSERT OR IGNORE INTO users (name, email, password, admin) VALUES (?, ?, ?, ?)',
-      ['user', 'user@example.com', 'password', 0],  // Ensure to hash the password in production
-      () => console.log('Regular user inserted or already exists'),
+      'INSERT OR IGNORE INTO users (name, email, password, role) VALUES (?, ?, ?, ?)',
+      ['client', 'client@example.com', 'password', 1],  // Client role
+      () => console.log('Client user inserted or already exists'),
       (tx, error) => {
-        console.error('Error inserting regular user:', error);
+        console.error('Error inserting client user:', error);
+        return false;
+      }
+    );
+    tx.executeSql(
+      'INSERT OR IGNORE INTO users (name, email, password, role) VALUES (?, ?, ?, ?)',
+      ['guest', 'guest@example.com', 'password', 0],  // Guest role
+      () => console.log('Guest user inserted or already exists'),
+      (tx, error) => {
+        console.error('Error inserting guest user:', error);
         return false;
       }
     );
@@ -178,3 +189,4 @@ export const populateProducts = () => {
     );
   });
 };
+export default db;

@@ -13,7 +13,6 @@ const Loader = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f0f0', // Eggshell background color
     justifyContent: 'center',
     alignItems: 'center',
   },

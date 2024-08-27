@@ -1,19 +1,17 @@
 import { useState, useEffect } from 'react';
-import { getUser, authenticateUser } from '../services/data/user'; // Adjust path as needed
+import { getUser } from '../services/data/user';
 
 export const useAuth = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        // Simulate fetching user data
-        const fetchedUser = await getUser(); // Adjust as needed
+        const fetchedUser = await getUser();
         setUser(fetchedUser);
       } catch (err) {
-        setError(err.message);
+        console.error('Error fetching user:', err);
       } finally {
         setLoading(false);
       }
@@ -22,9 +20,5 @@ export const useAuth = () => {
     fetchUser();
   }, []);
 
-  const skipAuth = () => {
-    setUser(null); // Skip auth and continue as guest
-  };
-
-  return { user, loading, error, skipAuth };
+  return { user, loading };
 };
