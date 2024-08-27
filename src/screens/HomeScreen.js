@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, Button } from 'react-native';
 import HeroBanner from '../components/Common/HeroBanner'; // Hero carousel component
 import InputField from '../components/Common/InputField'; 
-import SearchBar from '../components/SearchBar'; // Search bar component
+import SearchBar from '../components/Search/SearchBar'; // Search bar component
 import ProductList from '../components/Shopping/ProductList'; // Component to display complete list of product, organized by default by the most recent
 import ProductDetail from '../components/Shopping/ProductDetail'; // Component to display individual product
 import { useTheme } from '../hooks/useTheme'; // Custom hook to get the theme

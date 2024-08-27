@@ -1,7 +1,7 @@
 // SearchScreen.js
 import React, { useState } from 'react';
 import { View, Text, FlatList, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-import tripsData from '../services/datadata/trips.json';
+import tripsData from '../services/data/trips.json';
 import { useNavigation } from '@react-navigation/native'; 
 
 const SearchScreen = () => {
