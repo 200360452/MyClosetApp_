@@ -3,38 +3,30 @@
 //Bootom tab navigation et stack navigation
 //Le 8 mai, 2024
 // src/navigation/Navigation.js
-
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { enableScreens } from 'react-native-screens';
-enableScreens();
 
-// Import screens
 import HomeScreen from '../screens/HomeScreen';
-import AboutScreen from '../screens/AboutScreen';
-import ContactScreen from '../screens/ContactScreen';
 import SearchScreen from '../screens/SearchScreen';
 import AccountScreen from '../screens/Auth/AccountScreen';
 import SignInScreen from '../screens/Auth/SignInScreen';
 import SignUpScreen from '../screens/Auth/SignUpScreen';
+import AboutScreen from '../screens/AboutScreen';
+import ContactScreen from '../screens/ContactScreen';
 
-//// Define bottom tab and stack navigators
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-// Home Stack Navigator
 const HomeStack = () => (
   <Stack.Navigator>
     <Stack.Screen name="Home" component={HomeScreen} />
     <Stack.Screen name="About" component={AboutScreen} />
     <Stack.Screen name="Contact" component={ContactScreen} />
-    <Stack.Screen name="ProductList" component={ProductList} /> {/* Product list screen */}
   </Stack.Navigator>
 );
 
-// Account Stack Navigator
 const AccountStack = () => (
   <Stack.Navigator>
     <Stack.Screen name="Account" component={AccountScreen} />
@@ -42,35 +34,32 @@ const AccountStack = () => (
     <Stack.Screen name="SignUp" component={SignUpScreen} />
   </Stack.Navigator>
 );
-// Main Tab Navigator
-const MainTabNavigator = () => (
+
+export const MainTabNavigator = () => (
   <Tab.Navigator>
     <Tab.Screen 
       name="Home" 
       component={HomeStack}
       options={{
-        tabBarIcon: ({ size, color }) => <Ionicons name="home" size={size} color={color} />,
+        tabBarIcon: ({ size, color }) => <Ionicons name="home" size={size} color={color} />
       }} 
     />
     <Tab.Screen 
       name="Search" 
       component={SearchScreen}
       options={{
-        tabBarIcon: ({ size, color }) => <Ionicons name="search" size={size} color={color} />,
+        tabBarIcon: ({ size, color }) => <Ionicons name="search" size={size} color={color} />
       }} 
     />
     <Tab.Screen 
       name="Account" 
       component={AccountStack}
       options={{
-        tabBarIcon: ({ size, color }) => <Ionicons name="person" size={size} color={color} />,
+        tabBarIcon: ({ size, color }) => <Ionicons name="person" size={size} color={color} />
       }} 
     />
   </Tab.Navigator>
 );
-
-export default MainTabNavigator;
-
 
 /**
  * Stack Navigator Screens
